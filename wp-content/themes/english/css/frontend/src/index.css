@@ -1,0 +1,269 @@
+body{
+    width: 1024px;
+    margin:0px auto;
+    padding:10px;
+    background: #fff;
+    font-family: "Arial";
+    color:#5a5a5a;
+}
+
+/**
+*界面元素
+*/
+a{
+    text-decoration: none;
+    color:#000;
+}
+p{
+    line-height: 32px;
+}
+ul{
+    padding: 0px;
+}
+li{
+    list-style: none;
+}
+
+/**
+*logo
+*/
+.logo{
+    margin: 0px;
+    padding-top: 20px;
+}
+.logo a{
+    width: 700px;
+    height: 112px;
+    display: block;
+    background: url(../../images/app/logo.png) no-repeat;
+    font-size: 0px;
+    margin: auto;
+}
+
+/**
+*菜单
+*/
+.menu{
+    margin:40px 0px 40px 0px;
+}
+.menu ul{
+    padding-left:30px;
+}
+.menu li{
+    display: inline-block;
+    width: 10%;
+}
+.menu li a{
+    color: #000;
+}
+.menu li a:hover,.menu li a.active{
+    color: #ff0000;
+}
+
+/**
+*主体构架
+*/
+.main{
+    position: relative;
+}
+.left{
+    width: 70%;
+}
+.right{
+    position: absolute;
+    left:80%;
+    top:0px;
+}
+
+/**
+*顶部文章
+*/
+.topPost{
+    position: relative;
+    overflow: hidden;
+}
+.topPost img{
+    width: 100%;
+    height:auto;
+    display: block;
+    border: none;
+}
+.topPost .topPostDetail{
+    position: absolute;
+    left:-30%;
+    top:0px;
+    height: 100%;
+    width:30%;
+    background: #f9f9f9;
+    opacity: .8;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    padding:2.5%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -ms-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+.topPost .topPostDate{
+    display: block;
+    background: red;
+    width: 15%;
+    position: absolute;
+    left: -15%;
+    top: 0px;
+    text-align: center;
+    color:#fff;
+    z-index:100;
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -ms-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+.topPost .topPostDetail .topPostTitle{
+    border-bottom: 1px solid #5a5a5a;
+    padding-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.topPost:hover .topPostDetail,.topPost:hover .topPostDate{
+    left:0px;
+}
+
+/**
+*文章列表
+*/
+.postList{
+    border-bottom: 1px solid #5a5a5a;
+    padding-bottom: 20px;
+}
+.postList .post{
+    position: relative;
+    margin:40px 0px;
+}
+.postList .post .postThumbContainer{
+    position: absolute;
+    overflow: hidden;
+}
+.postList .post .postThumbContainer .postDate{
+    display: block;
+    background: #f9f9f9;
+    width: 50%;
+    position: absolute;
+    left: -50%;
+    top: 0px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    z-index:100;
+    opacity: .9;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -ms-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+}
+.postList .post .postThumbContainer:hover .postDate{
+    left:0px;
+}
+
+.postList .post .postDetail{
+    margin-left:240px;
+    height: 140px;
+}
+.postList .post .postDetail .postTitle{
+    margin:5px 0px 0px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.postList .post .postDetail .postExcerpt{
+    margin:5px 0px;
+}
+.postList .post .postDetail .postMore:hover{
+    color:#ff0000;
+}
+.postList .post .postBg{
+    width: 100%;
+    height:auto;
+    display: block;
+    border: none;
+}
+.postList .post .postDownContainer{
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+.postList .post .postDownContainer .postDownload{
+    background: #ff0000;
+    color:#fff;
+    display: inline-block;
+    padding: 0px 10px;
+    height:25px;
+    line-height: 25px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.postList .post .postDownContainer .postType{
+    font-size:0px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    vertical-align: top;
+}
+.postList .post .postDownContainer .video{
+    background: url(../../images/app/videoIcon.png) center center no-repeat;
+}
+.postList .post .postDownContainer .typo{
+    background: url(../../images/app/typoIcon.png) center center no-repeat;
+}
+
+/**
+*翻页
+*/
+ul.page-numbers{
+    text-align: right;
+    margin-top: 20px;
+}
+ul.page-numbers li{
+    display: inline;
+}
+ul.page-numbers li span, ul.page-numbers li a {
+    height: 20px;
+    padding: 4px 10px;
+    line-height: 20px;
+    display: inline-block;
+}
+ul.page-numbers li .current, ul.page-numbers li a:hover{
+    background: #ff0000;
+    color:#fff;
+}
+
+/**
+*右侧项目标题
+*/
+.right .rightItemTitle{
+    font-weight: normal;
+}
+
+.footer{
+    margin-top: 150px;
+}
+
+/**
+*搜索页
+*/
+.searchResultTip{
+    margin:40px 0px 0px 0px;
+}
+
+/**
+*公用类
+*/
+.redTxt{
+    color:#ff0000;
+}
