@@ -1,16 +1,8 @@
 <?php
 get_header();
-$resourceId=5;
 
 //获取页码
 $currentPageNumber=get_query_var('paged')?get_query_var('paged'):1;
-
-//查询参数
-$args = array(
-    'paged' => $currentPageNumber, //按页码查询
-    "cat"=>"-$resourceId"
-);
-query_posts($args);
 ?>
 
    <section class="main" id="main">

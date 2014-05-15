@@ -24,14 +24,18 @@ $(document).ready(function(){
     });
 
     $(".searchExcerpt").html(function(index,html){
-        var indexPre=html.indexOf("<em>");
-        var indexNex=html.indexOf("</em>");
+        var indexPre=html.indexOf("<span");
+        var indexNex=html.indexOf("</span>");
         var string="";
-        if(indexPre-10<0){
-            string=html.substring(0,indexNex+10)+"...";
+        if(indexPre-25<0){
+            string=html.substring(0,indexNex+25)+"...";
         }else{
-            string="..."+html.substring(indexPre-10,indexNex+10)+"...";
+            string="..."+html.substring(indexPre-25,indexNex+25)+"...";
         }
         return string;
     });
+
+    if(document.body.scrollHeight<=$("body").height()){
+        $(".main").css("minHeight",$("body").height()-420);
+    }
 });

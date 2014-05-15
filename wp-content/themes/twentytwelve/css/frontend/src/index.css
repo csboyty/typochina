@@ -71,7 +71,7 @@ a{
 }
 .indexMainItem .text{
     position: absolute;
-    display: none;
+    /*display: none;*/
     top:40%;
     left:50%;
     font-size:32px;
