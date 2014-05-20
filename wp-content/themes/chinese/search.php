@@ -9,10 +9,14 @@ function wps_highlight_results($text){
 
 get_header();
 ?>
-
+<style>
+    .search{
+        display: none;
+    }
+</style>
 <section class="main">
     <section class="left">
-        <form role="search" method="get" id="searchform" class="hnid_search_form" action="<?php echo home_url(); ?>">
+        <form role="search" method="get" id="searchform" action="<?php echo home_url(); ?>">
             <input type="text" name="s" class="searchInput"  id="searchInput" value="<?php  echo get_search_query(); ?>">
         </form>
 		<?php if ( have_posts() ) :

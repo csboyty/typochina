@@ -7,5 +7,5 @@
 </head>
 </html>
 <body>
-oOps,permit error,3 seconds after redirect to home page！
+oOps,您没有权力访问该页面，3秒后跳转到首页！
 </body>

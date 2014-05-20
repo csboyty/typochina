@@ -3,13 +3,15 @@ html{
     height: 100%;
 }
 body{
-    margin:0px;
     padding:0px;
     background: #fff;
     font-family: "微软雅黑","黑体";
     color:#5a5a5a;
     font-size: 14px;
     height: 100%;
+    max-width: 1336px;
+    min-width: 960px;
+    margin:auto;
 }
 
 /**
@@ -28,21 +30,23 @@ ul{
 li{
     list-style: none;
 }
-
 .header{
-    width: 1024px;
-    margin:auto;
+    width: 100%;
+    padding-top: 40px;
 }
+
 /**
 *logo
 */
 .logo{
     margin: 0px;
-    padding-top: 20px;
+    width:23.6%;
+    position: absolute;
+    top: 26px;
 }
 .logo a{
-    width: 700px;
-    height: 112px;
+    width: 270px;
+    height: 128px;
     display: block;
     background: url(../../../images/frontend/app/logo.png) no-repeat;
     font-size: 0px;
@@ -53,10 +57,9 @@ li{
 *菜单
 */
 .menu-main-container{
-    margin:60px 0px 0px 0px;
-}
-.menu{
-    padding-left:30px;
+    margin:0px 0px 0px 23.6%;
+    width:53%;
+    display: inline-block;
 }
 .menu .menu-item{
     display: inline-block;
@@ -68,21 +71,24 @@ li{
 .menu .menu-item a:hover,.menu .current-menu-item a,.menu .current-post-ancestor a{
     color: #ff0000;
 }
+.search{
+    display: inline-block;
+}
 
 /**
 *主体构架
 */
 .main{
     position: relative;
-    width:1024px;
-    margin:40px auto;
+    width:61.4%;
+    margin:40px 0px 40px 23.6%;
 }
 .left{
-    width: 70%;
+    width: 75%;
 }
 .right{
     position: absolute;
-    left:80%;
+    left:87%;
     top:0px;
 }
 
@@ -102,14 +108,14 @@ li{
 }
 .topPost .topPostDetail{
     position: absolute;
-    left:-30%;
+    left:-50%;
     top:0px;
     height: 100%;
-    width:30%;
+    width:200px;
     background: #f9f9f9;
     opacity: .8;
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
-    padding:5%;
+    padding:20px 30px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -120,8 +126,8 @@ li{
 }
 .topPost .topPostDate{
     display: block;
-    background: red;
-    width: 15%;
+    background: #f9f9f9;
+    width: 100px;
     height:22px;
     font-size: 12px;
     line-height: 22px;
@@ -129,8 +135,10 @@ li{
     left: 0%;
     top: 0px;
     text-align: center;
-    color:#fff;
+    color:#000;
     z-index:100;
+    opacity: .95;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=95);
     -webkit-transition: all .4s ease-out;
     -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
@@ -145,9 +153,9 @@ li{
     font-size: 20px;
 }
 .topPost .topPostDetail .topPostExcerpt{
-    line-height: 30px;
+    line-height: 26px;
 }
-.topPost:hover .topPostDetail,.topPost:hover .topPostDate{
+.topPost:hover .topPostDetail{
     left:0px;
 }
 
@@ -155,7 +163,7 @@ li{
 *文章列表
 */
 .postList{
-    border-bottom: 1px solid #5a5a5a;
+    /*border-bottom: 1px solid #5a5a5a;*/
     padding-bottom: 20px;
 }
 .postList .post{
@@ -163,7 +171,7 @@ li{
     margin:60px 0px;
 }
 .postList .post:first-child{
-    margin:40px 0px 60px 0px;
+    margin:30px 0px 60px 0px;
 }
 .postList .post .postThumbContainer{
     position: absolute;
@@ -181,8 +189,8 @@ li{
     line-height: 20px;
     text-align: center;
     z-index:100;
-    opacity: .9;
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    opacity: .95;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=95);
     -webkit-transition: all .4s ease-out;
     -moz-transition: all .4s ease-out;
     -ms-transition: all .4s ease-out;
@@ -202,7 +210,8 @@ li{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 26px;
+    font-size: 20px;
+
 }
 .postList .post .postDetail .postExcerpt{
     margin:5px 0px;
@@ -217,8 +226,10 @@ li{
 .postList .post .postDetail .postMore{
     font-size: 12px;
     font-weight: bold;
+    position: absolute;
+    bottom: 10px;
 }
-.postList .post .postDetail .postMore:hover{
+.postList .post .postDetail .postMore:hover,.postList .post .postDetail .postTitle a:hover{
     color:#ff0000;
 }
 .postList .post .postBg{
@@ -262,11 +273,15 @@ li{
     margin:30px 0px;
 }
 .searchPostList .post:first-child{
-    margin:30px 0px 30px 0px;
+    margin:40px 0px 30px 0px;
 }
 .searchPostList .post .postTitle{
     margin:5px 0px;
-    font-size: 20px;
+    font-size: 26px;
+    font-weight: normal;
+}
+.searchPostList .post .postTitle a:hover{
+    color:#ff0000;
 }
 
 
@@ -299,18 +314,62 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .postSingle{
     border-bottom: 1px solid #5a5a5a;
 }
+.postSingle .title{
+    color: #000000;
+    font-size:20px;
+    margin-bottom: 10px;
+}
 .postSingle .date{
     margin:5px 0px;
+    display: block;
+}
+.postSingle .tags a{
+    color:#5a5a5a;
+}
+.postSingle img{
+    max-width: 100%;
+}
+.postSingle p{
+    font-size: 16px;
+    line-height: 32px;
 }
 .postSingle .returnTop{
     display: block;
     text-align: right;
     width: 80px;
-    margin:10px 0px 10px auto;
+    margin:70px 0px 10px auto;
 }
-.postSingle .returnTop:hover{
+.postSingle .returnTop:hover,.postSingle .tags a:hover{
     color: #ff0000;
 }
+
+/**
+* 下一篇文章
+*/
+.postNav{
+    margin-top: 50px;
+}
+.postNav .postNavNext{
+    font-size:20px;
+}
+.postNav .postNavNext a{
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.postNav .postNavNext a:hover{
+    color:#ff0000;
+}
+.postNav .postNavNext .nextPostDate{
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color:#5a5a5a;
+    font-weight: normal;
+}
+
 
 /**
 * 下载
@@ -321,8 +380,10 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     left:0px;
 }
 .postDownContainer .postDownload{
-    background: #ff0000;
-    color:#fff;
+    background: #f9f9f9;
+    color:#000;
+    opacity: .95;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=95);
     display: inline-block;
     padding: 0px 10px;
     font-size: 12px;
@@ -331,6 +392,9 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+}
+.postDownContainer .postDownload:hover{
+    color:#ff0000;
 }
 .postDownContainer .postType{
     font-size:0px;
@@ -345,9 +409,7 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .postDownContainer .typo{
     background: url(../../../images/frontend/app/typoIcon.png) center center no-repeat;
 }
-.postNav{
-    margin-top: 50px;
-}
+
 
 /**
 *右侧项目标题
@@ -357,13 +419,24 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     font-size: 14px;
     margin:40px 0px 20px 0px;
 }
+.right .rightItem:first-child .rightItemTitle{
+    margin:0px 0px 20px 0px;
+}
+
+/**
+* 标签云
+*/
 .tagList a{
     display: block;
-    margin: 15px 0px;
+    margin: 12px 0px;
 }
 .tagList a:hover{
     color:#ff0000;
 }
+
+/**
+* 友情链接
+*/
 .linkList li{
     margin: 10px 0px;
 }
@@ -374,10 +447,16 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     color:#ff0000;
 }
 
+
+/**
+* 底部
+*/
 .footer{
-    width: 1024px;
-    margin: 150px auto 0px auto;
-    font-size: 10px;
+    margin: 150px 0px 0px 0px;
+    font-size: 8px;
+    padding-bottom: 5px;
+    width: 23.6%;
+    text-align: center;
 }
 
 /**
@@ -385,22 +464,6 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 */
 .searchResultTip{
     margin:40px 0px 0px 0px;
-}
-
-/**
-*标签页
-*/
-.tagTitle{
-    font-size: 14px;
-    color: #ff0000;
-}
-
-.nextPostDate{
-    display: block;
-    margin-top: 20px;
-    font-size: 14px;
-    color:#5a5a5a;
-    font-weight: normal;
 }
 .searchInput{
     border:1px solid #5a5a5a;
@@ -412,6 +475,15 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     border: 1px solid #ff0000;
     outline: none;
 }
+
+/**
+*标签页
+*/
+.tagTitle{
+    font-size: 14px;
+    color: #ff0000;
+}
+
 
 /**
 * 404页面

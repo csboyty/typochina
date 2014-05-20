@@ -2,29 +2,16 @@
 get_header();
 
 $resourceId=5;
-$resourceCategories=get_categories(array("parent"=>$resourceId,"hide_empty"=>false,'orderby'=>'id'));
-$resourceCatArray=array();
-
-
-foreach ($resourceCategories as $key=>$category) {
-    array_push($resourceCatArray,$category->term_id);
-}
 ?>
 
     <section class="main">
         <section class="left">
             <article class="postSingle">
                 <?php while ( have_posts() ) : the_post();
-                    if(in_category($resourceCatArray,$post)){
+                    if(in_category($resourceId,$post)){
                         $postId=get_the_ID();
                         $backgroundSrc="";
-                        $category=get_the_category($postId);
-                        //print_r($category);
-                        if($category[0]->term_id==$videoResource){
-                            $typeClass="video";
-                        }else{
-                            $typeClass="typo";
-                        }
+
 
                         if($background=get_post_meta($postId,"zy_background",true)){
                             $background=json_decode($background,true);
@@ -35,14 +22,15 @@ foreach ($resourceCategories as $key=>$category) {
                         <img class="postBg" src="<?php echo $backgroundSrc; ?>">
                         <div class="postDownContainer">
                             <a target="_blank" href="<?php echo get_the_content(); ?>" class="postDownload">DOWNLOAD</a>
-                            <span class="postType <?php echo $typeClass; ?>">资源类型</span>
+                            <!--<span class="postType <?php /*echo $typeClass; */?>">资源类型</span>-->
                         </div>
 
                     <?php
                     }else{
                     ?>
                         <h2 class="title"><?php the_title(); ?></h2>
-                        <p class="date"><?php the_date(); ?></p>
+                        <span class="tags"><?php the_tags("记录："); ?></span>
+                        <span class="date"><?php the_date(); ?></span>
                         <?php the_content(); ?>
                     <?php
                     }
@@ -53,7 +41,23 @@ foreach ($resourceCategories as $key=>$category) {
             </article>
             <nav class="postNav">
                 <h3 class="postNavNext">
-                    <?php next_post_link('%link', '下一篇：%title<span class="nextPostDate">%date</span>'); ?>
+
+                    <?php
+                        $nextPost=get_next_post();
+                        //print_r($nextPost);
+                        $tagArray=get_the_tags($nextPost->ID);
+                        //print_r($tagArray);
+                        $tags=array();
+                        $tagsString="";
+                        if($tagArray&&count($tagArray)!=0){
+                            foreach($tagArray as $tag){
+                                array_push($tags,$tag->name);
+                            }
+
+                            $tagsString="记录：".implode(",",$tags);
+                        }
+
+                        next_post_link("%link", "下一篇：%title<span class='nextPostDate'>$tagsString</span>",true); ?>
                 </h3>
             </nav>
         </section>

@@ -35,7 +35,6 @@ $(document).ready(function(){
         return string;
     });
 
-
 });
 
 window.onload=function(){

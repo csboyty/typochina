@@ -45,8 +45,8 @@
                     'current' => $current_page,
                     'total' => $total, 'mid_size' => 4,
                     'type' => 'list',
-                    'prev_text'    => "上一页",
-                    'next_text'    => "下一页",
+                    'prev_text'    => "Prev",
+                    'next_text'    => "Next",
                 ));
             }
             ?>

@@ -73,7 +73,7 @@ function twentytwelve_setup() {
 
 	// This theme uses a custom image size for featured images, displayed on "standard" posts.
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 200, 140,true ); // Unlimited height, soft crop
+	set_post_thumbnail_size( 200, 130,true ); // Unlimited height, soft crop
 }
 add_action( 'after_setup_theme', 'twentytwelve_setup' );
 
@@ -552,7 +552,7 @@ function zy_post_background_box($post)
         <div class="zy_post_div"><input id="zy_upload_background_button" type="button" class="zy_post_button"
                                         value="上传">
 
-            <span style="display: block">限jpg、png，分辨率700*300</span>
+            <span style="display: block">限jpg、png，分辨率620*288</span>
 
             <span id="zy_background_percent" class="zy_background_percent"></span>
 
@@ -771,9 +771,9 @@ function zy_action_uploadfile()
     //判断背景图是否为1280宽
     if ($file_use_type == "zy_background") {
         $attr = getimagesize($_FILES["file"]["tmp_name"]);
-        if ($attr[0] != 700 && $attr[1] != 300) {
+        if ($attr[0] != 620 && $attr[1] != 288) {
             //如果不是1：1的图片报错
-            $obj = array("message" => "图片宽度不是700或者高度不是300！");
+            $obj = array("message" => "图片宽度不是620或者高度不是288！");
             wp_send_json_error($obj);
         }
     }
@@ -853,6 +853,20 @@ function zy_delete_post($post_id)
 }
 
 add_action('deleted_post', 'zy_delete_post');
+
+/**
+ * 修改搜索的显示地址
+ */
+function change_search_url_rewrite() {
+    if ( is_search() && ! empty( $_GET['s'] ) ) {
+        wp_redirect( home_url( "/search/" ) . urlencode( get_query_var( 's' ) ) );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'change_search_url_rewrite' );
+
+
+
 
 
 

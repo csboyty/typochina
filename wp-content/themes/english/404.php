@@ -1,29 +1,48 @@
-<?php
-/**
- * The template for displaying 404 pages (Not Found).
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <!--<meta http-equiv="refresh" content="5;url=<?php /*echo home_url(); */?>">-->
+    <title><?php wp_title("|",true,"right"); ?></title>
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png"
+          mce_href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png" type="image/x-png">
 
-get_header(); ?>
+    <link href="<?php echo get_template_directory_uri(); ?>/css/frontend/src/index.css" rel="stylesheet" type="text/css">
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
+    <script>
+        window.onload=function(){
+            var seconds=5;
 
-			<article id="post-0" class="post error404 no-results not-found">
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'twentytwelve' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'twentytwelve' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			</article><!-- #post-0 -->
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
-
-<?php get_footer(); ?>
+            setInterval(function(){
+                if(seconds>0){
+                    --seconds;
+                    if(navigator.appName.indexOf("Explorer") > -1){
+                        document.getElementById('seconds').innerText = seconds;
+                    } else{
+                        document.getElementById('seconds').textContent = seconds;
+                    }
+                }
+            },1000);
+        }
+    </script>
+</head>
+<body>
+<header class="header">
+    <h1 class="logo">
+        <a href="#">
+            logo
+        </a>
+    </h1>
+</header>
+<section class="main">
+    <div class="_404Container">
+        <h1 class="_404Title">404</h1>
+        <p class="_404Content">
+            很抱歉，您访问的页面不存在。
+            <br>
+            系统将在<span id="seconds" class="redTxt">5</span>秒后，跳转到网站入口页。
+        </p>
+    </div>
+</section>
+</body>
+</html>

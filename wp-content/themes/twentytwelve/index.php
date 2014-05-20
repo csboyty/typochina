@@ -13,35 +13,25 @@
     <script src="<?php echo get_template_directory_uri(); ?>/js/frontend/src/index.js"></script>
 
 </head>
-<body class="indexBody" id="indexBody">
+<body class="indexBody">
 
 <section class="leftMain asideMain" id="leftMain">
 
 </section>
 
 <section class="indexMain" id="indexMain">
-    <header class="indexHeader" id="indexHeader">
-        <h1 class="indexLogo">
-            <a href="<?php echo home_url(); ?>">logo</a>
-        </h1>
-    </header>
+        <img class="logoBig" src="<?php echo get_template_directory_uri(); ?>/images/frontend/app/logoBig.png">
+        <ul class="langMenu">
+            <li><a href="<?php
+                $mainBlog=get_blog_details(3);
+                echo $mainBlog->siteurl;
+                ?>" id="chinese">汉字</a></li>
 
-    <section class="indexMainItem">
-        <section class="left">
-            <h2 class="text"><a href="#" id="chinese">《汉字》</a></h2>
-            <!--<object class="object" data="<?php /*echo get_template_directory_uri(); */?>/data/Chinese.swf">
-            <embed class="object" src="<?php /*echo get_template_directory_uri(); */?>/data/Chinese.swf"></embed>
-        </object>-->
-        </section>
-
-        <aside class="right">
-            <h2 class="text"><a href="#" id="english">Typography</a></h2>
-            <!--<object class="object" data="<?php /*echo get_template_directory_uri(); */?>/data/Typography.swf">
-                <embed class="object" src="<?php /*echo get_template_directory_uri(); */?>/data/Typography.swf"></embed>
-            </object>-->
-        </aside>
-    </section>
-
+            <li><a href="<?php
+                $mainBlog=get_blog_details(3);
+                echo $mainBlog->siteurl;
+                ?>" id="english">西文</a></li>
+        </ul>
 </section>
 
 <section class="rightMain asideMain" id="rightMain">

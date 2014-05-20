@@ -1,49 +1,68 @@
 <?php
-/**
- * The template for displaying Search Results pages.
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+function wps_highlight_results($text){
+    $sr = get_query_var('s');
+    $keys = explode(" ",$sr);
+    $text = preg_replace('/('.implode('|', $keys) .')/iu', '<span class="redTxt">'.$sr.'</span>', $text);//设置突出关键字样式
 
-get_header(); ?>
+    return $text;
+}
 
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
+get_header();
+?>
+<style>
+    .search{
+        display: none;
+    }
+</style>
+<section class="main">
+    <section class="left">
+        <form role="search" method="get" id="searchform" action="<?php echo home_url(); ?>">
+            <input type="text" name="s" class="searchInput"  id="searchInput" value="<?php  echo get_search_query(); ?>">
+        </form>
+		<?php if ( have_posts() ) :
+            global $wp_query;
+            //print_r($wp_query);
+            $search=get_search_query();
+            $total=$wp_query->max_num_pages;
+        ?>
 
-		<?php if ( have_posts() ) : ?>
+        <p>为您搜索到<?php echo $wp_query->found_posts ?>条记录</p>
+        <ul class="postList searchPostList">
+            <?php while ( have_posts() ) : the_post();?>
+                <li class="post">
+                    <h2 class="postTitle"><a href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?></a></h2>
+                    <p class="searchExcerpt"><?php echo wps_highlight_results(get_the_excerpt()); ?></p>
+                </li>
+            <?php endwhile; ?>
+        </ul>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentytwelve' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header>
+        <!-- 分页-->
+        <?php
 
-			<?php twentytwelve_content_nav( 'nav-above' ); ?>
-
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
-
-			<?php twentytwelve_content_nav( 'nav-below' ); ?>
-
+        //print_r($total);
+        if ($total > 1) {
+            if (!$current_page = get_query_var('paged')) {
+                $current_page = 1;
+            }
+            //获取路径
+            $permalink_structure = get_option('permalink_structure');
+            $format = empty($permalink_structure) ? '&page=%#%' : '/page/%#%/';
+            echo paginate_links(array(
+                'base' => get_pagenum_link(1) . '%_%',
+                'format' => $format,
+                'current' => $current_page,
+                'total' => $total, 'mid_size' => 4,
+                'type' => 'list',
+                'prev_text'    => "上一页",
+                'next_text'    => "下一页",
+            ));
+        }
+        ?>
 		<?php else : ?>
-
-			<article id="post-0" class="post no-results not-found">
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentytwelve' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'twentytwelve' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .entry-content -->
-			</article><!-- #post-0 -->
-
+            <p>没有搜索到您所需的信息！</p>
 		<?php endif; ?>
+    </section>
+</section>
 
-		</div><!-- #content -->
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -130,12 +130,12 @@ jQuery(document).ready(function($){
 
     zy_post_controller.zy_backgroun_uploader();
 
-    $("#publish").click(function(){
+    $("#publish").click(function(event){
 
         //判断缩略图
         var insideP=$("#postimagediv .inside .hide-if-no-js");
         if(insideP.length<=1){
-            alert("没有上传缩略图！");
+            alert("没有设置缩略图！");
             return false;
         }else if($("#zy_background").val()==""){
             alert("没有上传背景图！");

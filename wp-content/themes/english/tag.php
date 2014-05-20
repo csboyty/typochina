@@ -1,51 +1,66 @@
-<?php
-/**
- * The template for displaying Tag pages.
- *
- * Used to display archive-type pages for posts in a tag.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
+<?php get_header(); ?>
 
-get_header(); ?>
+    <section class="main">
+        <section class="left">
+            <header>
+                <span class="tagTitle">标签：<?php single_tag_title(); ?></span>
+            </header>
+            <ul class="postList">
+                <?php
+                $thumbSrc="";
+                while ( have_posts() ) : the_post();
+                    $postId=get_the_ID();
 
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
+                    if(has_post_thumbnail($postId)){
+                        $thumbnailId=get_post_thumbnail_id($postId);
+                        if(wp_get_attachment_metadata($thumbnailId)){
 
-		<?php if ( have_posts() ) : ?>
-			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Tag Archives: %s', 'twentytwelve' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+                            //如果存在保存媒体文件信息的metadata，那么系统是可以获取出缩略图的
+                            $thumbSrc= wp_get_attachment_image_src($thumbnailId,"post-thumbnail");
+                            $thumbSrc=$thumbSrc[0];
+                        }
+                    }
+                    ?>
+                    <li class="post">
+                        <div class="postThumbContainer">
+                            <span class="postDate"><?php echo get_the_date(); ?></span>
+                            <img class="postThumb" src="<?php echo $thumbSrc; ?>">
+                        </div>
+                        <div class="postDetail">
+                            <h2 class="postTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                            <p class="postExcerpt"><?php echo get_the_excerpt(); ?></p>
+                            <a href="<?php the_permalink(); ?>" class="postMore">阅读更多</a>
+                        </div>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
 
-			<?php if ( tag_description() ) : // Show an optional tag description ?>
-				<div class="archive-meta"><?php echo tag_description(); ?></div>
-			<?php endif; ?>
-			</header><!-- .archive-header -->
+            <!-- 分页-->
+            <?php
+            global $wp_query;
+            $total = $wp_query->max_num_pages;
+            if ($total > 1) {
+                if (!$current_page = get_query_var('paged')) {
+                    $current_page = 1;
+                }
+                //获取路径
+                $permalink_structure = get_option('permalink_structure');
+                $format = empty($permalink_structure) ? '&page=%#%' : '/page/%#%/';
+                echo paginate_links(array(
+                    'base' => get_pagenum_link(1) . '%_%',
+                    'format' => $format,
+                    'current' => $current_page,
+                    'total' => $total, 'mid_size' => 4,
+                    'type' => 'list',
+                    'prev_text'    => "Prev",
+                    'next_text'    => "Next",
+                ));
+            }
+            ?>
+        </section>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+        <?php get_template_part("right"); ?>
 
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
-				get_template_part( 'content', get_post_format() );
+    </section>
 
-			endwhile;
-
-			twentytwelve_content_nav( 'nav-below' );
-			?>
-
-		<?php else : ?>
-			<?php get_template_part( 'content', 'none' ); ?>
-		<?php endif; ?>
-
-		</div><!-- #content -->
-	</section><!-- #primary -->
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
