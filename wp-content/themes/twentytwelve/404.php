@@ -2,11 +2,13 @@
 <html>
 <head>
     <meta name="renderer" content="webkit">
-    <!--<meta http-equiv="refresh" content="5;url=<?php /*echo home_url(); */?>">-->
+    <meta http-equiv="refresh" content="5;url=<?php echo home_url(); ?>">
     <title><?php wp_title("|",true,"right"); ?></title>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png"
           mce_href="<?php echo get_template_directory_uri(); ?>/images/frontend/app/favicon.png" type="image/x-png">
-
+    <!--[if lte IE 9]>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/frontend/lib/html5.js"></script>
+    <![endif]-->
     <link href="<?php echo get_template_directory_uri(); ?>/css/frontend/src/index.css" rel="stylesheet" type="text/css">
 
     <script>
@@ -29,7 +31,7 @@
 <body class="indexBody">
 <header class="header">
     <h1 class="logo">
-        <a href="#">
+        <a href="<?php echo home_url(); ?>">
             logo
         </a>
     </h1>

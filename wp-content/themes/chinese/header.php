@@ -17,6 +17,7 @@
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/frontend/src/index.js"></script>
 </head>
 <body>
+<section class="mainWrap" id="mainWrap">
 <header class="header">
     <h1 class="logo">
         <a href="<?php

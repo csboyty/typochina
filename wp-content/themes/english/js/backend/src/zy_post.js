@@ -67,7 +67,7 @@ jQuery(document).ready(function($){
                 //flash_swf_url:'../wp-includes/js/plupload/plupload.flash.swf',
                 url:ajaxurl,
                 filters:[
-                    {title:"Background files", extensions:"jpg,gif,png,jpeg,mp4"}
+                    {title:"Background files", extensions:"jpg,gif,png,jpeg"}
                 ],
                 multipart_params:{
                     action:"uploadfile",

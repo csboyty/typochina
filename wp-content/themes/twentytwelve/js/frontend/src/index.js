@@ -13,12 +13,11 @@ function chineseObjectClick(){
     $("#leftMain").animate({
         "left":0
     },2000,function(){
-        $("#leftMain").height("auto");
-        if($("#leftMain").html()){
-            $("#leftMain").css("background","#fff");
+        var leftMain=$("#leftMain");
+        leftMain.height("auto");
+        if(leftMain.html()){
+            leftMain.css("background","#fff");
         }
-
-        $("body").css("max-width","1336px");
     });
 }
 
@@ -27,35 +26,53 @@ function englishObjectClick(){
     $("#rightMain").animate({
         "left":0
     },2000,function(){
-        $("#rightMain").height("auto");
-        if($("#rightMain").html()){
-            $("#rightMain").css("background","#fff");
+        var rightMain=$("#rightMain");
+        rightMain.height("auto");
+        if(rightMain.html()){
+            rightMain.css("background","#fff");
         }
-
-        $("body").css("max-width","1336px");
     });
 }
+function setExcerpt(){
+    $(".postExcerpt").ellipsis({
+        row: 2
+    });
 
+    $(".topPost img").load(function(){
+        $(".topPostExcerpt").ellipsis({
+            row: Math.floor(($(".topPostDetail").height()-50)/30)
+        });
+    });
+}
 $(document).ready(function(){
-    $("#leftMain").load($("#chinese").attr("href"),function(){
-        if($("#leftMain").css("left")==0){
-            $("#leftMain").css("background","#fff");
+    var leftMain=$("#leftMain");
+    var rightMain=$("#rightMain");
+    var chinese=$("#chinese");
+    var english=$("#english");
+    leftMain.load(chinese.attr("href")+" #mainWrap",function(){
+        if(leftMain.css("left")==0){
+            leftMain.css("background","#fff");
         }
+
+        setExcerpt();
+
     });
 
-    $("#rightMain").load($("#english").attr("href"),function(){
-        if($("#rightMain").css("left")==0){
-            $("#rightMain").css("background","#fff");
+    rightMain.load(english.attr("href")+" #mainWrap",function(){
+        if(rightMain.css("left")==0){
+            rightMain.css("background","#fff");
         }
+
+        setExcerpt();
     });
 
-    $("#chinese").click(function(){
+    chinese.click(function(){
         chineseObjectClick();
 
         return false;
     });
 
-    $("#english").click(function(){
+    english.click(function(){
         englishObjectClick();
 
         return false;

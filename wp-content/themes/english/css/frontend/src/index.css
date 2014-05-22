@@ -3,15 +3,14 @@ html{
     height: 100%;
 }
 body{
+    margin:0px;
     padding:0px;
     background: #fff;
-    font-family: "Arial","微软雅黑","黑体";
+    font-family: "Arail","微软雅黑","黑体";
     color:#5a5a5a;
     font-size: 14px;
     height: 100%;
-    max-width: 1336px;
-    min-width: 960px;
-    margin:auto;
+    width:100%;
 }
 
 /**
@@ -30,11 +29,12 @@ ul{
 li{
     list-style: none;
 }
-
 .header{
     width: 100%;
     padding-top: 40px;
+    position:relative;
 }
+
 /**
 *logo
 */
@@ -67,7 +67,6 @@ li{
 }
 .menu .menu-item a{
     color: #000;
-    font-weight: bold;
 }
 .menu .menu-item a:hover,.menu .current-menu-item a,.menu .current-post-ancestor a{
     color: #ff0000;
@@ -79,6 +78,11 @@ li{
 /**
 *主体构架
 */
+.mainWrap{
+    max-width: 1336px;
+    min-width:960px;
+    margin:auto;
+}
 .main{
     position: relative;
     width:61.4%;
@@ -114,8 +118,8 @@ li{
     height: 100%;
     width:200px;
     background: #f9f9f9;
-    opacity: .8;
-    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    opacity: .95;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=95);
     padding:20px 30px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -156,7 +160,7 @@ li{
 .topPost .topPostDetail .topPostExcerpt{
     line-height: 26px;
 }
-.topPost:hover .topPostDetail,.topPost:hover .topPostDate{
+.topPost:hover .topPostDetail{
     left:0px;
 }
 
@@ -330,9 +334,21 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .postSingle img{
     max-width: 100%;
 }
-.postSingle p{
+.postSingle .postSingleContent p{
     font-size: 16px;
     line-height: 32px;
+}
+.postSingle .postSingleContent h1{
+
+}
+.postSingle .postSingleContent h2{
+
+}
+.postSingle .postSingleContent h3{
+
+}
+.postSingle .postSingleContent h4{
+
 }
 .postSingle .returnTop{
     display: block;
@@ -343,6 +359,10 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .postSingle .returnTop:hover,.postSingle .tags a:hover{
     color: #ff0000;
 }
+
+/**
+* 下一篇文章
+*/
 .postNav{
     margin-top: 50px;
 }
@@ -419,6 +439,10 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .right .rightItem:first-child .rightItemTitle{
     margin:0px 0px 20px 0px;
 }
+
+/**
+* 标签云
+*/
 .tagList a{
     display: block;
     margin: 12px 0px;
@@ -426,6 +450,10 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .tagList a:hover{
     color:#ff0000;
 }
+
+/**
+* 友情链接
+*/
 .linkList li{
     margin: 10px 0px;
 }
@@ -436,6 +464,10 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
     color:#ff0000;
 }
 
+
+/**
+* 底部
+*/
 .footer{
     margin: 150px 0px 0px 0px;
     font-size: 8px;

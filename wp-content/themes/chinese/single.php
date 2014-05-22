@@ -31,7 +31,11 @@ $resourceId=5;
                         <h2 class="title"><?php the_title(); ?></h2>
                         <span class="tags"><?php the_tags("记录："); ?></span>
                         <span class="date"><?php the_date(); ?></span>
-                        <?php the_content(); ?>
+                        
+                        <section class="postSingleContent">
+                            <?php the_content(); ?>
+                        </section>
+
                     <?php
                     }
                     ?>

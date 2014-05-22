@@ -17,6 +17,7 @@
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/frontend/src/index.js"></script>
 </head>
 <body>
+<section class="mainWrap" id="mainWrap">
 <header class="header">
     <h1 class="logo">
         <a href="<?php
@@ -26,7 +27,7 @@
     </h1>
     <?php wp_nav_menu(); ?>
     <form role="search" method="get" id="searchform" class="search" action="<?php echo home_url(); ?>">
-        <input type="text" name="s" class="searchInput" id="searchInput" placeholder="Search...">
+        <input type="text" name="s" class="searchInput" id="searchInput" placeholder="搜索...">
     </form>
 </header>
 
