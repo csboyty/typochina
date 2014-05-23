@@ -10,27 +10,29 @@ function indexMainFadeOut(){
 }
 function chineseObjectClick(){
     indexMainFadeOut();
-    $("#leftMain").animate({
+    var leftMain=$("#leftMain");
+    leftMain.animate({
         "left":0
     },2000,function(){
-        var leftMain=$("#leftMain");
-        leftMain.height("auto");
-        if(leftMain.html()){
-            leftMain.css("background","#fff");
+
+        //如果是还在loading状态，不需要设置高度
+        if(leftMain.find(".loading").length==0){
+            leftMain.height("auto");
         }
+        history.pushState({},"","chinese");
     });
 }
 
 function englishObjectClick(){
     indexMainFadeOut();
-    $("#rightMain").animate({
+    var rightMain=$("#rightMain");
+    rightMain.animate({
         "left":0
     },2000,function(){
-        var rightMain=$("#rightMain");
-        rightMain.height("auto");
-        if(rightMain.html()){
-            rightMain.css("background","#fff");
+        if(rightMain.find(".loading").length==0){
+            rightMain.height("auto");
         }
+        history.pushState({},"","english");
     });
 }
 function setExcerpt(){
@@ -50,19 +52,22 @@ $(document).ready(function(){
     var chinese=$("#chinese");
     var english=$("#english");
     leftMain.load(chinese.attr("href")+" #mainWrap",function(){
+
+        //如果section已经在主屏幕了，需要设置高度
         if(leftMain.css("left")==0){
-            leftMain.css("background","#fff");
+            leftMain.height("auto");
         }
-
+        $("#leftMain .tagList a").html( function(){var s=$(this).attr("title").replace(/[^0-9]/ig, "");
+            return $(this).html()+":&nbsp;"+parseInt(s);}).removeAttr("title");
         setExcerpt();
-
     });
 
     rightMain.load(english.attr("href")+" #mainWrap",function(){
         if(rightMain.css("left")==0){
-            rightMain.css("background","#fff");
+            rightMain.height("auto");
         }
-
+        $("#rightMain .tagList a").html( function(){var s=$(this).attr("title").replace(/[^0-9]/ig, "");
+            return $(this).html()+":&nbsp;"+parseInt(s);}).removeAttr("title");
         setExcerpt();
     });
 

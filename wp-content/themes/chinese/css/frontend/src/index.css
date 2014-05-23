@@ -282,7 +282,7 @@ li{
 }
 .searchPostList .post .postTitle{
     margin:5px 0px;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: normal;
 }
 .searchPostList .post .postTitle a:hover{
@@ -333,19 +333,25 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 }
 .postSingle img{
     max-width: 100%;
+    display: block;
+    margin:auto;
 }
 .postSingle .postSingleContent p{
     font-size: 16px;
     line-height: 32px;
+    text-indent: 32px;
 }
 .postSingle .postSingleContent h1{
-
+    font-size: 20px;
+    font-weight: bold;
 }
 .postSingle .postSingleContent h2{
-
+    font-size: 18px;
+    font-weight: bold;
 }
 .postSingle .postSingleContent h3{
-
+    font-size: 16px;
+    font-weight: bold;
 }
 .postSingle .postSingleContent h4{
 
