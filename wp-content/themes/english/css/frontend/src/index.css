@@ -339,6 +339,7 @@ ul.page-numbers li .current, ul.page-numbers li a:hover{
 .postSingle .postSingleContent p{
     font-size: 16px;
     line-height: 32px;
+    text-indent:32px;
 }
 .postSingle .postSingleContent h1{
     font-size: 20px;

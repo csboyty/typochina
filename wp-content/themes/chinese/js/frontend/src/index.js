@@ -9,10 +9,10 @@
 $(document).ready(function(){
     /*$(".topPostExcerpt").ellipsis({
         row: 6
-    });*/
+    });
     $(".postExcerpt").ellipsis({
         row: 2
-    });
+    });*/
 
 
     $("#tagList a").html( function(){var s=$(this).attr("title").replace(/[^0-9]/ig, "");
@@ -45,6 +45,10 @@ window.onload=function(){
     if(document.body.scrollHeight<=$("body").height()){
         $(".main").css("minHeight",$("body").height()-295);
     }
+
+    $(".postExcerpt").ellipsis({
+        row: 2
+    });
 
     $(".topPostExcerpt").ellipsis({
         row: Math.floor(($(".topPostDetail").height()-50)/30)

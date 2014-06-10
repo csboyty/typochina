@@ -19,7 +19,7 @@
 <body>
 
 <section class="leftMain asideMain" id="leftMain">
-    <span class="loading">loading</span>
+    <span class="loading">loading...</span>
 </section>
 
 <section class="indexMain" id="indexMain">
@@ -38,7 +38,7 @@
 </section>
 
 <section class="rightMain asideMain" id="rightMain">
-    <span class="loading">loading</span>
+    <span class="loading">loading...</span>
 </section>
 
 </body>
